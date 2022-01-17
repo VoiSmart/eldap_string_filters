@@ -1,3 +1,5 @@
+[![CI](https://github.com/VoiSmart/eldap_string_filters/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/VoiSmart/eldap_string_filters/actions/workflows/ci.yml)
+
 # EldapStringFilters
 
 **An RFC4515 ldap string filter parser**
