@@ -28,6 +28,7 @@ defmodule EldapStringFilters.MixProject do
 
   defp deps do
     [
+      {:nimble_parsec, "> 0.0.0", runtime: false},
       {:abnf_parsec, "~> 1.2", runtime: false},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false}
