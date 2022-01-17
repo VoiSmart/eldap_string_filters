@@ -144,7 +144,19 @@ defmodule EldapStringFilters.RFC4515 do
       end
 
     :eldap.extensibleMatch(value, eldap_opts)
+    |> patch_extensible_match()
   end
+
+  # see https://github.com/erlang/otp/pull/5615
+  def patch_extensible_match({:extensibleMatch, {record, rule, type, value, 'TRUE'}}) do
+    {:extensibleMatch, {record, rule, type, value, true}}
+  end
+
+  def patch_extensible_match({:extensibleMatch, {record, rule, type, value, 'FALSE'}}) do
+    {:extensibleMatch, {record, rule, type, value, false}}
+  end
+
+  def patch_extensible_match(record), do: record
 
   defp handle_filtertype(approx: _), do: :approx
   defp handle_filtertype(equals: _), do: :equals

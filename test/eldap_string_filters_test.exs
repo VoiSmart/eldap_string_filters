@@ -3,6 +3,7 @@ defmodule EldapStringFiltersTest do
   use ExUnit.Case, async: true
 
   alias EldapStringFilters
+  alias EldapStringFilters.RFC4515
 
   @test_suite [
     %{
@@ -116,11 +117,13 @@ defmodule EldapStringFiltersTest do
             :eldap.extensibleMatch('Chicago',
               dnAttributes: true,
               type: 'ou'
-            ),
+            )
+            |> RFC4515.patch_extensible_match(),
             :eldap.extensibleMatch('Miami',
               dnAttributes: true,
               type: 'ou'
             )
+            |> RFC4515.patch_extensible_match()
           ])
         ])
     },
@@ -134,12 +137,14 @@ defmodule EldapStringFiltersTest do
             :eldap.extensibleMatch('Chicago',
               dnAttributes: true,
               type: 'ou'
-            ),
+            )
+            |> RFC4515.patch_extensible_match(),
             :eldap.not(
               :eldap.extensibleMatch('Wrigleyville',
                 dnAttributes: true,
                 type: 'ou'
               )
+              |> RFC4515.patch_extensible_match()
             )
           ])
         ])
@@ -168,6 +173,7 @@ defmodule EldapStringFiltersTest do
             type: 'memberOf',
             matchingRule: '1.2.840.113556.1.4.1941'
           )
+          |> RFC4515.patch_extensible_match()
         ])
     },
     %{
