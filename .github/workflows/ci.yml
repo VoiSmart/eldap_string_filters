@@ -15,6 +15,12 @@ jobs:
     name: "[${{matrix.otp}}/${{matrix.elixir}}] CI Tests [OTP/Elixir]"
     env: 
       MIX_ENV: test
+    services:
+      ldap:
+        image: osixia/openldap:latest
+        ports:
+          - 1636:636
+          - 1389:389
     strategy:
       fail-fast: false
       matrix:
@@ -35,4 +41,4 @@ jobs:
       - name: Compile project
         run: mix compile
       - name: Run tests
-        run: mix test
+        run: mix test --include integration:true

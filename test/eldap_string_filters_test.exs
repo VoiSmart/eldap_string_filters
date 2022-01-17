@@ -268,4 +268,23 @@ defmodule EldapStringFiltersTest do
       assert {:ok, unquote(expected)} = EldapStringFilters.parse(unquote(input))
     end
   end)
+
+  describe "integration tests:" do
+    setup do
+      {:ok, handle} = :eldap.open(['localhost'], port: 1389)
+      :ok = :eldap.simple_bind(handle, 'cn=admin,dc=example,dc=org', 'admin')
+
+      {:ok, %{handle: handle}}
+    end
+
+    @test_suite
+    |> Enum.each(fn %{input: input, expected: _expected, desc: desc} ->
+      @tag :integration
+      test desc, %{handle: handle} do
+        {:ok, filter} = EldapStringFilters.parse(unquote(input))
+
+        assert {:ok, _} = :eldap.search(handle, base: 'dc=example,dc=org', filter: filter)
+      end
+    end)
+  end
 end
