@@ -20,9 +20,7 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/eldap_string_filters](https://hexdocs.pm/eldap_string_filters).
+Docs can be found at [https://hexdocs.pm/eldap_string_filters](https://hexdocs.pm/eldap_string_filters).
 
 ## Usage
 ```elixir
@@ -35,9 +33,9 @@ iex> {:ok, filter} = EldapStringFilters.parse("(&(|(ou:dn:=People)(:1.2.3.4:=Adm
   [
     or: [
       extensibleMatch: {:MatchingRuleAssertion, :asn1_NOVALUE, 'ou', 'People',
-       'TRUE'},
+       true},
       extensibleMatch: {:MatchingRuleAssertion, '1.2.3.4', :asn1_NOVALUE,
-       'Administration', 'FALSE'}
+       'Administration', false}
     ],
     equalityMatch: {:AttributeValueAssertion, 'objectclass', 'inetorgperson'},
     equalityMatch: {:AttributeValueAssertion, 'sn', 'willeke'}
