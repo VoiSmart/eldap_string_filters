@@ -63,6 +63,10 @@ defmodule EldapStringFilters.RFC4515 do
     skip: ["item"],
     abnf_file: "abnf/rfc4515.abnf"
 
+  # Redefining the abnf parsec function for the :item key
+  # because nible_parsec does not really backtrack and abnf
+  # grammar is not clear about precedence.
+  # So adding a lookahead here is order to prevent overlaps.
   defparsec(
     :item,
     choice([
