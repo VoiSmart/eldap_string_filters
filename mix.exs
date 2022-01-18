@@ -6,24 +6,36 @@ defmodule EldapStringFilters.MixProject do
     [
       app: :eldap_string_filters,
       version: "0.1.0",
+      description: "An RFC4515 ldap string filter parser for eldap",
+      deps: deps(),
+      docs: docs(),
       elixir: "~> 1.11",
       elixirc_options: [warnings_as_errors: true],
-      start_permanent: Mix.env() == :prod,
-      deps: deps(),
-      # Docs
-      name: "EldapStringFilters",
+      homepage_url: "https://github.com/VoiSmart/eldap_string_filters",
+      package: package(),
       source_url: "https://github.com/VoiSmart/eldap_string_filters",
-      docs: [
-        # The main page in the docs
-        main: "readme",
-        extras: ["README.md"]
-      ]
+      start_permanent: Mix.env() == :prod
     ]
   end
 
   def application do
     [
       extra_applications: [:logger, :eldap]
+    ]
+  end
+
+  defp docs do
+    [
+      main: "readme",
+      extras: ["README.md"]
+    ]
+  end
+
+  defp package do
+    [
+      mantainers: ["Matteo Brancaleoni"],
+      licenses: ["Apache-2.0"],
+      links: %{"GitHub" => "https://github.com/VoiSmart/eldap_string_filters"}
     ]
   end
 
