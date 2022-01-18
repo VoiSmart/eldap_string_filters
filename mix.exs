@@ -5,7 +5,7 @@ defmodule EldapStringFilters.MixProject do
   def project do
     [
       app: :eldap_string_filters,
-      version: "0.1.0",
+      version: "0.1.1",
       description: "An RFC4515 ldap string filter parser for eldap",
       deps: deps(),
       docs: docs(),
@@ -35,8 +35,13 @@ defmodule EldapStringFilters.MixProject do
     [
       mantainers: ["Matteo Brancaleoni"],
       licenses: ["Apache-2.0"],
-      links: %{"GitHub" => "https://github.com/VoiSmart/eldap_string_filters"}
+      links: %{"GitHub" => "https://github.com/VoiSmart/eldap_string_filters"},
+      files: files()
     ]
+  end
+
+  defp files do
+    ["abnf", "lib", "mix.exs", "README*", "LICENSE*"]
   end
 
   defp deps do
