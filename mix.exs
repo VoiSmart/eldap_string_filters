@@ -20,7 +20,7 @@ defmodule EldapStringFilters.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :eldap]
+      extra_applications: [:logger, :asn1, :eldap]
     ]
   end
 
