@@ -5,7 +5,7 @@ defmodule EldapStringFilters.MixProject do
   def project do
     [
       app: :eldap_string_filters,
-      version: "0.1.1",
+      version: "0.1.2",
       description: "An RFC4515 ldap string filter parser for eldap",
       deps: deps(),
       docs: docs(),
