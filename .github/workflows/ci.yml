@@ -24,13 +24,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        otp: [23.3, 24.0, 24.1, 24.2]
-        elixir: [1.11.4, 1.12.2, 1.13.1]
+        otp: [23, 24, 25, 26]
+        elixir: [1.11.4, 1.12.2, 1.13.4, 1.14.5, 1.15.6]
     steps:
-      - uses: actions/checkout@v2.3.1
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: erlef/setup-beam@v1
+      - uses: erlef/setup-beam@61e01a43a562a89bfc54c7f9a378ff67b03e4a21 # v1.16.0
         with:
           otp-version: ${{matrix.otp}}
           elixir-version: ${{matrix.elixir}}
